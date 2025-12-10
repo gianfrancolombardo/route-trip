@@ -69,32 +69,6 @@ const createCustomMarker = (stop: Stop, isActive: boolean) => {
   return L.divIcon({
     html: iconMarkup,
     className: 'custom-marker-icon', // see index.html for styles
-    iconSize: [size, size + 10], 
-    iconAnchor: [size / 2, size + 5],
-    popupAnchor: [0, -(size + 5)]
-  });
-};
-
-const MapController = ({ focusCoords }: { focusCoords: Coordinates }) => {
-  const map = useMap();
-  
-  useEffect(() => {
-    if (focusCoords) {
-      map.flyTo([focusCoords.lat, focusCoords.lng], 10, {
-        animate: true,
-        duration: 2.5, // Slower duration for a more cinematic "flying" effect
-        easeLinearity: 0.25
-      });
-    }
-  }, [focusCoords, map]);
-  
-  return null;
-};
-
-interface MapProps {
-  activeStop: Stop | null;
-  onStopClick: (stop: Stop) => void;
-  focusCoordinates: Coordinates;
 }
 
 const MapComponent: React.FC<MapProps> = ({ activeStop, onStopClick, focusCoordinates }) => {
