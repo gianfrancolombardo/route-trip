@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#f59e0b" />
     <title>Gran Vuelta al Sur</title>
     
-    <!-- Tailwind CSS (CDN kept for simplicity in this migration) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Leaflet CSS -->
@@ -20,9 +20,8 @@
     <style>
       body {
         font-family: 'Outfit', sans-serif;
-        background-color: #fafaf9; /* Stone-50 */
+        background-color: #fafaf9;
       }
-      /* Hide scrollbar for clean mobile look */
       .no-scrollbar::-webkit-scrollbar {
         display: none;
       }
@@ -30,12 +29,11 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
       }
-      /* Leaflet Fixes */
       .leaflet-container {
         width: 100%;
         height: 100%;
         z-index: 10;
-        background: #e7e5e4; /* Stone-200 to match map tiles better */
+        background: #e7e5e4;
       }
       
       /* MAP MARKER ANIMATIONS */
@@ -54,13 +52,11 @@
         100% { transform: scale(1) translateY(0); opacity: 1; }
       }
 
-      /* Stagger delays for fun */
       .leaflet-marker-pane .leaflet-marker-icon:nth-child(1) .marker-pop { animation-delay: 0.1s; }
       .leaflet-marker-pane .leaflet-marker-icon:nth-child(2) .marker-pop { animation-delay: 0.2s; }
       .leaflet-marker-pane .leaflet-marker-icon:nth-child(3) .marker-pop { animation-delay: 0.3s; }
       .leaflet-marker-pane .leaflet-marker-icon:nth-child(4) .marker-pop { animation-delay: 0.4s; }
       .leaflet-marker-pane .leaflet-marker-icon:nth-child(5) .marker-pop { animation-delay: 0.5s; }
-      
     </style>
   <script type="importmap">
 {
@@ -72,15 +68,14 @@
     "leaflet": "https://esm.sh/leaflet@^1.9.4",
     "lucide-react": "https://esm.sh/lucide-react@^0.559.0",
     "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "vite": "https://esm.sh/vite@^7.2.7"
+    "vite": "https://esm.sh/vite@^7.2.7",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
   <body>
     <div id="root"></div>
-    <!-- Vite Entry Point -->
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>
