@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stop } from '../types';
-import { MapPin, Navigation, Moon, Lightbulb, ChevronRight, ChevronLeft } from 'lucide-react';
+import { MapPin, Navigation, Moon, Lightbulb, ChevronRight, ChevronLeft, ExternalLink, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface StopOverlayProps {
@@ -12,6 +12,12 @@ interface StopOverlayProps {
 }
 
 const StopOverlay: React.FC<StopOverlayProps> = ({ stop, currentStep, totalSteps, onNext, onPrev }) => {
+  
+  const handleGoogleSearch = () => {
+    const query = encodeURIComponent(`qué ver en ${stop.title} ${stop.location} turismo curiosidades`);
+    window.open(`https://www.google.com/search?q=${query}`, '_blank');
+  };
+
   return (
     <div className="absolute bottom-0 left-0 right-0 z-[500] p-4 pb-6">
       <motion.div 
@@ -46,6 +52,16 @@ const StopOverlay: React.FC<StopOverlayProps> = ({ stop, currentStep, totalSteps
              </div>
           </div>
 
+          {/* Unique Vibe Banner */}
+          <div className="mb-3 bg-gradient-to-r from-amber-100 to-orange-50 p-2.5 rounded-xl flex gap-3 items-center border border-amber-200/50">
+             <div className="bg-white p-1.5 rounded-full text-amber-500 shadow-sm shrink-0">
+               <Sparkles size={14} fill="currentColor" />
+             </div>
+             <p className="text-amber-900 text-xs font-bold leading-tight">
+               {stop.uniqueVibe}
+             </p>
+          </div>
+
           {/* Content Scroller */}
           <div className="max-h-[30vh] overflow-y-auto pr-1 space-y-3 no-scrollbar mb-4">
              <p className="text-stone-600 italic">"{stop.description}"</p>
@@ -64,6 +80,15 @@ const StopOverlay: React.FC<StopOverlayProps> = ({ stop, currentStep, totalSteps
                     <span className="text-amber-700 font-medium">{stop.secret}</span>
                 </div>
              </div>
+
+             {/* Google Search Button */}
+             <button 
+                onClick={handleGoogleSearch}
+                className="w-full py-2.5 bg-white border border-stone-200 text-stone-600 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-stone-50 hover:text-stone-900 transition-colors shadow-sm"
+             >
+                <span>Ver más curiosidades</span>
+                <ExternalLink size={14} />
+             </button>
           </div>
 
           {/* Controls */}

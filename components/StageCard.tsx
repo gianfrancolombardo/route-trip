@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stop } from '../types';
-import { MapPin, Moon, Navigation, Lightbulb, ChevronDown } from 'lucide-react';
+import { MapPin, Moon, Navigation, Lightbulb, ChevronDown, ExternalLink, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface StageCardProps {
@@ -10,6 +10,13 @@ interface StageCardProps {
 }
 
 const StageCard: React.FC<StageCardProps> = ({ stop, isActive, onClick }) => {
+  
+  const handleGoogleSearch = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const query = encodeURIComponent(`qué ver en ${stop.title} ${stop.location} turismo`);
+    window.open(`https://www.google.com/search?q=${query}`, '_blank');
+  };
+
   return (
     <motion.div 
       layout
@@ -57,7 +64,13 @@ const StageCard: React.FC<StageCardProps> = ({ stop, isActive, onClick }) => {
             transition={{ duration: 0.4 }}
             className="space-y-4 text-sm"
           >
-            <div className="bg-amber-50 p-3 rounded-xl border border-amber-100 text-amber-900">
+            {/* Unique Vibe */}
+            <div className="flex gap-2 items-start bg-amber-50 p-2.5 rounded-lg border border-amber-100/50">
+               <Sparkles size={16} className="text-amber-500 shrink-0 mt-0.5" />
+               <p className="text-xs font-bold text-amber-800">{stop.uniqueVibe}</p>
+            </div>
+
+            <div className="bg-stone-50 p-3 rounded-xl border border-stone-100 text-stone-800">
                <p className="font-medium italic leading-relaxed">"{stop.description}"</p>
             </div>
 
@@ -93,6 +106,14 @@ const StageCard: React.FC<StageCardProps> = ({ stop, isActive, onClick }) => {
                   </div>
                </div>
             </div>
+
+            <button 
+                onClick={handleGoogleSearch}
+                className="w-full py-3 mt-2 bg-white border border-stone-200 text-stone-600 rounded-xl text-xs font-bold uppercase tracking-wide flex items-center justify-center gap-2 hover:bg-stone-50 hover:text-stone-900 transition-colors shadow-sm"
+             >
+                <span>Ver más info</span>
+                <ExternalLink size={14} />
+             </button>
           </motion.div>
         ) : (
           <div className="flex justify-between items-center text-stone-400">

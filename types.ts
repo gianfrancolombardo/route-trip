@@ -10,6 +10,7 @@ export interface Stop {
   location: string;
   description: string;
   highlight: string;
+  uniqueVibe: string; // New field for the unique characteristic phrase
   sleepOptionA: string;
   sleepOptionB?: string;
   routeInfo: string;
