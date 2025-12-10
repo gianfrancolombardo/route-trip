@@ -1,11 +1,7 @@
 {
   "name": "gran-vuelta-sur",
-  "private": true,
   "version": "1.0.0",
   "type": "module",
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -23,7 +19,6 @@
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@vitejs/plugin-react": "^4.2.0",
-    "typescript": "^5.2.2",
     "vite": "^5.0.0"
   }
 }
